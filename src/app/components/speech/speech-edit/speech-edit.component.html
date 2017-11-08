@@ -1,0 +1,64 @@
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Share speech</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+              <div class="input-group">
+                  <input type="email" class="form-control" [(ngModel)]="reply_to" placeholder="Email" aria-label="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-info" (click)="sendSpeechToEmail(reply_to)" type="button">Send</button>
+                  </span>
+                </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        </div>
+      </ng-template>
+
+<div class="card card-default">
+    <div class="card-header">
+      <div class="card-title">
+          <i class="fa fa-file-text" aria-hidden="true"></i> {{ title }}
+      </div>
+    </div>
+    <div class="card-body">
+      <input type="text" placeholder="Type title here" [(ngModel)]="speech.title" class="form-control mb-2" >
+      <textarea
+        placeholder="Type speech content here"
+        class="form-control"
+        name="" id=""
+        cols="30"
+        [(ngModel)]="speech.content"
+        rows="10"></textarea>
+      <div class="row mt-2">
+        <div class="col-sm">
+          <input type="text" placeholder="Author" [(ngModel)]="speech.author" class="form-control">
+        </div>
+        <div class="col-sm">
+          <input type="text" placeholder="Subject area keywords" [(ngModel)]="speech.subject" class="form-control">
+        </div>
+        <div class="col-sm">
+            <div class="form-group has-danger has-feedback">
+                <div class="input-group">
+                  <input class="form-control" id="dp" [ngClass]="{'form-control-danger': !isValidDate(speech.date) && date.invalid && date.dirty}" placeholder="yyyy-mm-dd"
+                         name="dp" [(ngModel)]="speech.date" ngbDatepicker #d="ngbDatepicker" #date="ngModel">
+                  <button class="input-group-addon" (click)="d.toggle()" type="button">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+        <button type="button" class="btn btn-danger" *ngIf="!hideDeleteBtn" (click)="removeSpeech()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+        <button type="button" class="btn btn-primary" (click)="onSave()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        <button type="button" class="btn btn-success" *ngIf="!hideShareBtn" [disabled]="speech.isShared" (click)="open(content)"><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
+    </div>
+  </div>

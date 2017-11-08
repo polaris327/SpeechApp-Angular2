@@ -1,0 +1,13 @@
+<div class="container mt-3">
+    <h1>Submit a new Speech</h1>
+    <div class="row">
+        <div class="col-md">
+          <speech-edit
+            [hideDeleteBtn]="true"
+            [hideShareBtn]="true"
+            [speech]="newSpeech"
+            (onSpeechSave)="onSpeechSave($event)"
+            title="Create new speech"></speech-edit>
+        </div>
+    </div>
+</div>

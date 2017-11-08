@@ -1,0 +1,33 @@
+
+<div class="container mt-3">
+  <h1>View my Speeches</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-default">
+        <div class="card-header">
+          <div class="card-title">
+              <i class="fa fa-list-ul" aria-hidden="true"></i> Speeches list
+          </div>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                <button type="button" *ngFor="let speech of speechList; let i = index"
+                    (click)="selectSpeech(speech, i)"
+                    [ngClass]="{'active': i == selectedIndex}"
+                    class="list-group-item list-group-item-action">
+                    <i class="fa fa-file-word-o" aria-hidden="true"></i> {{ speech.title }} 
+                    <span *ngIf="speech.isShared" class="badge badge-success">Shared</span>
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <speech-edit
+        [speech]="selectedSpeech"
+        title="Speech content"
+        (onSpeechDelete)="removeSpeech()">
+      </speech-edit>
+    </div>
+  </div>
+</div>

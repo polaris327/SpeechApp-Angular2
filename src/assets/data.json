@@ -1,0 +1,28 @@
+{
+  "data":[
+    {
+      "title": "Speech1",
+      "author": "Alex",
+      "subject": "Challenge",
+      "date": { "year": 2017, "month": 11, "day": 3 },
+      "content": "Speech1 content",
+      "isShared": false
+    },
+    {
+      "title": "Speech2",
+      "author": "Alex",
+      "subject": "Challenge",
+      "date": { "year": 2017, "month": 11, "day": 4 },
+      "content": "Speech2 content",
+      "isShared": true
+    },
+    {
+      "title": "Speech3",
+      "author": "Alex",
+      "subject": "Challenge",
+      "date": { "year": 2017, "month": 11, "day": 5 },
+      "content": "Speech3 content",
+      "isShared": false
+    }
+  ]
+}
